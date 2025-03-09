@@ -18,6 +18,7 @@
 		2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC78A2D7D8BD600C387CE /* MainTabBarView.swift */; };
 		2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7902D7DAEE800C387CE /* CartView.swift */; };
 		2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */; };
+		2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7942D7DC35000C387CE /* ProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		2B5DC78D2D7DA3E500C387CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2B5DC7902D7DAEE800C387CE /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		2B5DC7942D7DC35000C387CE /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				2B5DC7832D7D8ADA00C387CE /* Models */,
 				2B5DC7862D7D8B3500C387CE /* HomeView.swift */,
+				2B5DC7942D7DC35000C387CE /* ProductCell.swift */,
 				2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */,
 			);
 			path = HomeView;
@@ -239,6 +242,7 @@
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
 				2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */,
+				2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */,
 				2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */,
 				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
 			);

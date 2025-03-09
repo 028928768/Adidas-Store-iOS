@@ -55,6 +55,8 @@ struct MainTabBarView: View {
                     }
                 
             }
+    
+            .tabViewStyle(.automatic)
             
         })
     }

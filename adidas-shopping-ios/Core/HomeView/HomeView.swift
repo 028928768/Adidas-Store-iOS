@@ -9,11 +9,37 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ScrollView {
+        ZStack {
             VStack {
-                Text("Home")
-            } //: VStack
+                ScrollView {
+                    // product grid
+                    ProductsGridView()
+                }
+            } //: MainVStack
             
+        }
+    }
+}
+
+// MARK: - Views
+extension HomeView {
+    @ViewBuilder
+    private func ProductsGridView() -> some View {
+        let columns = [
+            GridItem(alignment: .top),
+            GridItem(alignment: .top),
+        ]
+
+        LazyVGrid(columns: columns, spacing: 0) {
+            ProductCell()
+            ProductCell()
+            ProductCell()
+            ProductCell()
+            ProductCell()
+            ProductCell()
+            ProductCell()
+            ProductCell()
+            ProductCell()
         }
     }
 }

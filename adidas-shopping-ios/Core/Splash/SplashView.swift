@@ -30,7 +30,6 @@ struct SplashView: View {
                     } //: ZStack
                 }
             } //: ZStack
-            .padding()
             .onAppear {
                 viewModel.manageSplashAction()
             }
