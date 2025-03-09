@@ -8,14 +8,35 @@
 import SwiftUI
 
 struct SplashView: View {
+    
+    @StateObject private var viewModel = SplashViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+            // content
+            ZStack {
+                if viewModel.isActive {
+                    MainTabBarView()
+                } else {
+                    ZStack {
+                        Image("adidas-logo")
+                            .resizable()
+                            .frame(width: 125, height: 100)
+                            .scaledToFit()
+                            .foregroundStyle(.tint)
+                            .padding()
+                        VStack {
+                            Spacer()
+                            ProgressView()
+                        } //: VStack
+                    } //: ZStack
+                }
+            } //: ZStack
+            .padding()
+            .onAppear {
+                viewModel.manageSplashAction()
+            }
+            //: content
+        
+
     }
 }
 

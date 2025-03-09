@@ -13,6 +13,9 @@
 		2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7792D7D859000C387CE /* Coordinator.swift */; };
 		2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC77C2D7D86B100C387CE /* SplashView.swift */; };
 		2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC77E2D7D86C900C387CE /* SplashViewModel.swift */; };
+		2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7862D7D8B3500C387CE /* HomeView.swift */; };
+		2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */; };
+		2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC78A2D7D8BD600C387CE /* MainTabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,10 @@
 		2B5DC7792D7D859000C387CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2B5DC77C2D7D86B100C387CE /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		2B5DC77E2D7D86C900C387CE /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		2B5DC7862D7D8B3500C387CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2B5DC78A2D7D8BD600C387CE /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
+		2B5DC78D2D7DA3E500C387CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +62,10 @@
 		2B5DC7692D7D812600C387CE /* adidas-shopping-ios */ = {
 			isa = PBXGroup;
 			children = (
+				2B5DC78D2D7DA3E500C387CE /* Info.plist */,
 				2B5DC7782D7D821300C387CE /* App */,
 				2B5DC77B2D7D868D00C387CE /* Core */,
-				2B5DC76E2D7D812800C387CE /* Assets.xcassets */,
+				2B5DC78C2D7DA30A00C387CE /* Resources */,
 				2B5DC7702D7D812800C387CE /* Preview Content */,
 			);
 			path = "adidas-shopping-ios";
@@ -84,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				2B5DC7802D7D86D200C387CE /* Splash */,
+				2B5DC7812D7D88B500C387CE /* MainTabBar */,
+				2B5DC7822D7D88C600C387CE /* HomeView */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -95,6 +105,39 @@
 				2B5DC77E2D7D86C900C387CE /* SplashViewModel.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		2B5DC7812D7D88B500C387CE /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC78A2D7D8BD600C387CE /* MainTabBarView.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		2B5DC7822D7D88C600C387CE /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7832D7D8ADA00C387CE /* Models */,
+				2B5DC7862D7D8B3500C387CE /* HomeView.swift */,
+				2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		2B5DC7832D7D8ADA00C387CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2B5DC78C2D7DA30A00C387CE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC76E2D7D812800C387CE /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +211,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */,
+				2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */,
+				2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */,
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
+				2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */,
 				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,12 +353,9 @@
 				DEVELOPMENT_TEAM = 8A8VNC6KC9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = adidas;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_FILE = "adidas-shopping-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -338,12 +381,9 @@
 				DEVELOPMENT_TEAM = 8A8VNC6KC9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = adidas;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_FILE = "adidas-shopping-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

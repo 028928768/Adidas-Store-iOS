@@ -9,6 +9,7 @@ import Foundation
 
 enum Route: Hashable {
     case home
+    case mainTabBar
 }
 
 final class Coordinator: ObservableObject {
@@ -21,6 +22,11 @@ final class Coordinator: ObservableObject {
     
     func pop() {
         self.path.removeLast()
+    }
+    
+    func popTo(_ route: Route) {
+        self.path.removeAll()
+        self.path.append(route)
     }
     
     func popToRoot() {
