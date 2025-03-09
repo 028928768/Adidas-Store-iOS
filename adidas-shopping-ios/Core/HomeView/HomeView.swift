@@ -9,9 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Text("Home")
-        } //: VStack
+        ScrollView {
+            VStack {
+                Text("Home")
+            } //: VStack
+            
+        }
     }
 }
 

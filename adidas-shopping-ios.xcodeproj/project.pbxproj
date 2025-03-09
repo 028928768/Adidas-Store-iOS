@@ -16,6 +16,8 @@
 		2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7862D7D8B3500C387CE /* HomeView.swift */; };
 		2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */; };
 		2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC78A2D7D8BD600C387CE /* MainTabBarView.swift */; };
+		2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7902D7DAEE800C387CE /* CartView.swift */; };
+		2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2B5DC78A2D7D8BD600C387CE /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		2B5DC78D2D7DA3E500C387CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2B5DC7902D7DAEE800C387CE /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 				2B5DC7802D7D86D200C387CE /* Splash */,
 				2B5DC7812D7D88B500C387CE /* MainTabBar */,
 				2B5DC7822D7D88C600C387CE /* HomeView */,
+				2B5DC78E2D7DAEA800C387CE /* CartView */,
+				2B5DC78F2D7DAEC800C387CE /* FavouritesView */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -138,6 +144,22 @@
 				2B5DC76E2D7D812800C387CE /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2B5DC78E2D7DAEA800C387CE /* CartView */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7902D7DAEE800C387CE /* CartView.swift */,
+			);
+			path = CartView;
+			sourceTree = "<group>";
+		};
+		2B5DC78F2D7DAEC800C387CE /* FavouritesView */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */,
+			);
+			path = FavouritesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,11 +233,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */,
+				2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */,
 				2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */,
 				2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */,
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
 				2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */,
+				2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */,
 				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

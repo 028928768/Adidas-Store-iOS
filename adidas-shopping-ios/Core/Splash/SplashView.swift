@@ -35,8 +35,6 @@ struct SplashView: View {
                 viewModel.manageSplashAction()
             }
             //: content
-        
-
     }
 }
 
