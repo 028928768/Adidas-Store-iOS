@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC76A2D7D812600C387CE /* adidas_shopping_iosApp.swift */; };
-		2B5DC76D2D7D812600C387CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC76C2D7D812600C387CE /* ContentView.swift */; };
 		2B5DC76F2D7D812800C387CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B5DC76E2D7D812800C387CE /* Assets.xcassets */; };
 		2B5DC7722D7D812800C387CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B5DC7712D7D812800C387CE /* Preview Assets.xcassets */; };
+		2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7792D7D859000C387CE /* Coordinator.swift */; };
+		2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC77C2D7D86B100C387CE /* SplashView.swift */; };
+		2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC77E2D7D86C900C387CE /* SplashViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B5DC7672D7D812600C387CE /* adidas-shopping-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "adidas-shopping-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5DC76A2D7D812600C387CE /* adidas_shopping_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adidas_shopping_iosApp.swift; sourceTree = "<group>"; };
-		2B5DC76C2D7D812600C387CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2B5DC76E2D7D812800C387CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B5DC7712D7D812800C387CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2B5DC7792D7D859000C387CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2B5DC77C2D7D86B100C387CE /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		2B5DC77E2D7D86C900C387CE /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				2B5DC7782D7D821300C387CE /* App */,
+				2B5DC77B2D7D868D00C387CE /* Core */,
 				2B5DC76E2D7D812800C387CE /* Assets.xcassets */,
 				2B5DC7702D7D812800C387CE /* Preview Content */,
 			);
@@ -70,9 +75,26 @@
 			isa = PBXGroup;
 			children = (
 				2B5DC76A2D7D812600C387CE /* adidas_shopping_iosApp.swift */,
-				2B5DC76C2D7D812600C387CE /* ContentView.swift */,
+				2B5DC7792D7D859000C387CE /* Coordinator.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		2B5DC77B2D7D868D00C387CE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7802D7D86D200C387CE /* Splash */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2B5DC7802D7D86D200C387CE /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC77C2D7D86B100C387CE /* SplashView.swift */,
+				2B5DC77E2D7D86C900C387CE /* SplashViewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +167,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B5DC76D2D7D812600C387CE /* ContentView.swift in Sources */,
+				2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */,
+				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
+				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

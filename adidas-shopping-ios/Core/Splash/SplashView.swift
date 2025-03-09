@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  SplashView.swift
 //  adidas-shopping-ios
 //
-//  Created by Simon SIwell on 8/3/2568 BE.
+//  Created by Simon SIwell on 9/3/2568 BE.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct SplashView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    SplashView()
 }

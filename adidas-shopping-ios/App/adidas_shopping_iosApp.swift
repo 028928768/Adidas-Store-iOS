@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct adidas_shopping_iosApp: App {
+    
+    @StateObject private var coordinator: Coordinator = Coordinator()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
+                .environmentObject(self.coordinator)
         }
     }
 }
