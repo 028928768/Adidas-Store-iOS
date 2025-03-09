@@ -10,6 +10,7 @@ import Foundation
 enum Route: Hashable {
     case home
     case mainTabBar
+    case productDetail(Product)
 }
 
 final class Coordinator: ObservableObject {

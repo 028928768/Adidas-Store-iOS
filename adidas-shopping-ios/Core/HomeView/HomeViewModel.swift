@@ -6,3 +6,25 @@
 //
 
 import Foundation
+
+final class HomeViewModel: ObservableObject {
+    @Published var products: [Product] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? = nil
+    
+    private var apiService = APIServices()
+    
+    func loadProducts() {
+        isLoading = true
+        apiService.fetchProducts(completion: { result in
+            self.isLoading = false
+            switch result {
+            case .success(let products):
+                self.products = products
+            case .failure(let error):
+                self.errorMessage = error.localizedDescription
+            }
+            
+        })
+    }
+}

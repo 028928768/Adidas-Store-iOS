@@ -19,6 +19,10 @@
 		2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7902D7DAEE800C387CE /* CartView.swift */; };
 		2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */; };
 		2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7942D7DC35000C387CE /* ProductCell.swift */; };
+		2B5DC79A2D7DE80700C387CE /* ProductsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7992D7DE80700C387CE /* ProductsGridView.swift */; };
+		2B5DC79C2D7DEBDF00C387CE /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC79B2D7DEBDF00C387CE /* ProductDetailView.swift */; };
+		2B5DC79E2D7DF05500C387CE /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC79D2D7DF05500C387CE /* ProductModel.swift */; };
+		2B5DC7A12D7DF15B00C387CE /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A02D7DF15B00C387CE /* APIServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		2B5DC7902D7DAEE800C387CE /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		2B5DC7942D7DC35000C387CE /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		2B5DC7992D7DE80700C387CE /* ProductsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsGridView.swift; sourceTree = "<group>"; };
+		2B5DC79B2D7DEBDF00C387CE /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		2B5DC79D2D7DF05500C387CE /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		2B5DC7A02D7DF15B00C387CE /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				2B5DC78D2D7DA3E500C387CE /* Info.plist */,
+				2B5DC79F2D7DF11500C387CE /* Services */,
 				2B5DC7782D7D821300C387CE /* App */,
 				2B5DC77B2D7D868D00C387CE /* Core */,
 				2B5DC78C2D7DA30A00C387CE /* Resources */,
@@ -128,8 +137,9 @@
 			children = (
 				2B5DC7832D7D8ADA00C387CE /* Models */,
 				2B5DC7862D7D8B3500C387CE /* HomeView.swift */,
-				2B5DC7942D7DC35000C387CE /* ProductCell.swift */,
 				2B5DC7882D7D8B4500C387CE /* HomeViewModel.swift */,
+				2B5DC7972D7DE77800C387CE /* Products */,
+				2B5DC7982D7DE7B300C387CE /* ProductDetail */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -137,6 +147,7 @@
 		2B5DC7832D7D8ADA00C387CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2B5DC79D2D7DF05500C387CE /* ProductModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,6 +174,31 @@
 				2B5DC7922D7DAEFD00C387CE /* FavouritesView.swift */,
 			);
 			path = FavouritesView;
+			sourceTree = "<group>";
+		};
+		2B5DC7972D7DE77800C387CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7942D7DC35000C387CE /* ProductCell.swift */,
+				2B5DC7992D7DE80700C387CE /* ProductsGridView.swift */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		2B5DC7982D7DE7B300C387CE /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC79B2D7DEBDF00C387CE /* ProductDetailView.swift */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		2B5DC79F2D7DF11500C387CE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7A02D7DF15B00C387CE /* APIServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,13 +274,17 @@
 				2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */,
 				2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */,
 				2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */,
+				2B5DC79A2D7DE80700C387CE /* ProductsGridView.swift in Sources */,
 				2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */,
+				2B5DC79C2D7DEBDF00C387CE /* ProductDetailView.swift in Sources */,
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
 				2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */,
 				2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */,
 				2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */,
 				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
+				2B5DC7A12D7DF15B00C387CE /* APIServices.swift in Sources */,
+				2B5DC79E2D7DF05500C387CE /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

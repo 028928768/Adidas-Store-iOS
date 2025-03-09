@@ -8,38 +8,31 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @StateObject private var viewModel = HomeViewModel()
     var body: some View {
         ZStack {
             VStack {
                 ScrollView {
-                    // product grid
-                    ProductsGridView()
+                    if viewModel.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .padding()
+                    } else if let errorMessage = viewModel.errorMessage {
+                        Text("Error: \(errorMessage)")
+                            .foregroundStyle(Color.red)
+                            .padding()
+                    } else {
+                        // product grid
+                        ProductsGridView(homeVM: viewModel)
+                    }
+                    
                 }
             } //: MainVStack
             
         }
-    }
-}
-
-// MARK: - Views
-extension HomeView {
-    @ViewBuilder
-    private func ProductsGridView() -> some View {
-        let columns = [
-            GridItem(alignment: .top),
-            GridItem(alignment: .top),
-        ]
-
-        LazyVGrid(columns: columns, spacing: 0) {
-            ProductCell()
-            ProductCell()
-            ProductCell()
-            ProductCell()
-            ProductCell()
-            ProductCell()
-            ProductCell()
-            ProductCell()
-            ProductCell()
+        .onAppear {
+            viewModel.loadProducts()
         }
     }
 }

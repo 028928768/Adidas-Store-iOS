@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductCell: View {
+    var product: Product
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             
@@ -56,5 +57,5 @@ struct ProductCell: View {
 }
 
 #Preview {
-    ProductCell()
+    ProductCell(product: .sampleProduct)
 }
