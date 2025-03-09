@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct CartView: View {
+    let carts = CartModel()
     var body: some View {
-        Text("Hello, CartView!")
+        List(carts.products, id: \.self) { item in
+            VStack {
+                Text(item.model)
+                Text(item.size)
+            }
+            
+        }
     }
 }
 

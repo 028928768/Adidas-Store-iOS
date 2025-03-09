@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+final class ProductDetailVM: ObservableObject {
+    
+    var product: Product? = nil
+        
+    func addToCartTapped(completion: @escaping () -> Void) {
+        print(product?.model)
+        completion()
+    }
+}

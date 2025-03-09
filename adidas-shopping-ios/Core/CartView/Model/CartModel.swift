@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+
+class CartModel: ObservableObject {
+    
+    var id: Int = 0
+    var products: [Product] = []
+    @Published var count: Int = 0
+    @Published var totalPrice: Double = 0
+    
+}

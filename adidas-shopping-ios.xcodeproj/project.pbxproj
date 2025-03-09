@@ -23,6 +23,9 @@
 		2B5DC79C2D7DEBDF00C387CE /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC79B2D7DEBDF00C387CE /* ProductDetailView.swift */; };
 		2B5DC79E2D7DF05500C387CE /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC79D2D7DF05500C387CE /* ProductModel.swift */; };
 		2B5DC7A12D7DF15B00C387CE /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A02D7DF15B00C387CE /* APIServices.swift */; };
+		2B5DC7A32D7E09CF00C387CE /* ProductDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A22D7E09CE00C387CE /* ProductDetailVM.swift */; };
+		2B5DC7A62D7E0E1600C387CE /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A52D7E0E1600C387CE /* CartViewModel.swift */; };
+		2B5DC7A82D7E0E2000C387CE /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A72D7E0E2000C387CE /* CartModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		2B5DC79B2D7DEBDF00C387CE /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		2B5DC79D2D7DF05500C387CE /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		2B5DC7A02D7DF15B00C387CE /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		2B5DC7A22D7E09CE00C387CE /* ProductDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVM.swift; sourceTree = "<group>"; };
+		2B5DC7A52D7E0E1600C387CE /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		2B5DC7A72D7E0E2000C387CE /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +169,9 @@
 		2B5DC78E2D7DAEA800C387CE /* CartView */ = {
 			isa = PBXGroup;
 			children = (
+				2B5DC7A42D7E0DD300C387CE /* Model */,
 				2B5DC7902D7DAEE800C387CE /* CartView.swift */,
+				2B5DC7A52D7E0E1600C387CE /* CartViewModel.swift */,
 			);
 			path = CartView;
 			sourceTree = "<group>";
@@ -189,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				2B5DC79B2D7DEBDF00C387CE /* ProductDetailView.swift */,
+				2B5DC7A22D7E09CE00C387CE /* ProductDetailVM.swift */,
 			);
 			path = ProductDetail;
 			sourceTree = "<group>";
@@ -199,6 +208,14 @@
 				2B5DC7A02D7DF15B00C387CE /* APIServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2B5DC7A42D7E0DD300C387CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DC7A72D7E0E2000C387CE /* CartModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,13 +292,16 @@
 				2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */,
 				2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */,
 				2B5DC79A2D7DE80700C387CE /* ProductsGridView.swift in Sources */,
+				2B5DC7A62D7E0E1600C387CE /* CartViewModel.swift in Sources */,
 				2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */,
 				2B5DC79C2D7DEBDF00C387CE /* ProductDetailView.swift in Sources */,
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
 				2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */,
+				2B5DC7A82D7E0E2000C387CE /* CartModel.swift in Sources */,
 				2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */,
 				2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */,
+				2B5DC7A32D7E09CF00C387CE /* ProductDetailVM.swift in Sources */,
 				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
 				2B5DC7A12D7DF15B00C387CE /* APIServices.swift in Sources */,
 				2B5DC79E2D7DF05500C387CE /* ProductModel.swift in Sources */,
