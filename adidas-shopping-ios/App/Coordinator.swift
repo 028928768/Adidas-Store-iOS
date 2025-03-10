@@ -11,11 +11,13 @@ enum Route: Hashable {
     case home
     case mainTabBar
     case productDetail(Product)
+    case cart
 }
 
 final class Coordinator: ObservableObject {
     
     @Published var path: [Route] = []
+    @Published var selectedTab = 0
     
     func push(_ route: Route) {
         self.path.append(route)

@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct CartView: View {
-    let carts = CartModel()
+    
+    @EnvironmentObject var viewModel: CartViewModel
+    
     var body: some View {
-        List(carts.products, id: \.self) { item in
-            VStack {
-                Text(item.model)
-                Text(item.size)
+        VStack {
+            Text("Cart")
+            List(viewModel.cartItems, id: \.self) { item in
+                VStack {
+                    Text("Cart")
+                    Text(item.products?.model ?? "model")
+                }
+                
             }
-            
         }
     }
 }

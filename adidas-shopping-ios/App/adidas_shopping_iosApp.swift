@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct adidas_shopping_iosApp: App {
     
-    @StateObject private var coordinator: Coordinator = Coordinator()
+    @StateObject private var coordinator = Coordinator()
+    @StateObject private var cartViewModel = CartViewModel()
     
     var body: some Scene {
         WindowGroup {
             SplashView()
                 .environmentObject(self.coordinator)
+                .environmentObject(self.cartViewModel)
         }
     }
 }

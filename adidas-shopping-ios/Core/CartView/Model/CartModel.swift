@@ -8,11 +8,22 @@
 import Foundation
 
 
-class CartModel: ObservableObject {
-    
+class CartModel: ObservableObject, Identifiable {
     var id: Int = 0
-    var products: [Product] = []
+    var products: Product? = nil
     @Published var count: Int = 0
-    @Published var totalPrice: Double = 0
+    
+}
+
+extension CartModel: Hashable {
+    static func == (lhs: CartModel, rhs: CartModel) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.products == rhs.products
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(products)
+    }
     
 }

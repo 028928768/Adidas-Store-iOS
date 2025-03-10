@@ -37,25 +37,28 @@ enum TabItems: Int, CaseIterable {
 
 struct MainTabBarView: View {
     @EnvironmentObject private var coordinator: Coordinator
-    @State var selectedTab = 0
+    
     var body: some View {
         
         NavigationStack(path: $coordinator.path) {
             ZStack(alignment: .bottom, content: {
                 
-                TabView() {
+                TabView(selection: $coordinator.selectedTab) {
                     HomeView()
                         .tabItem {
                             Label("\(TabItems.home.title)", systemImage: "\(TabItems.home.iconName)")
                         }
+                        .tag(0)
                     FavouritesView()
                         .tabItem {
                             Label("\(TabItems.favourites.title)", systemImage: "\(TabItems.favourites.iconName)")
                         }
+                        .tag(1)
                     CartView()
                         .tabItem {
                             Label("\(TabItems.cart.title)", systemImage: "\(TabItems.cart.iconName)")
                         }
+                        .tag(2)
                     
                 }
                 
@@ -70,6 +73,8 @@ struct MainTabBarView: View {
                     MainTabBarView()
                 case .productDetail(let product):
                     ProductDetailView(product: product)
+                case .cart:
+                    CartView()
                 }
                 
             }

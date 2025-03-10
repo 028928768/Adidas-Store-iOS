@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
+    @EnvironmentObject private var coordinator: Coordinator
+    @EnvironmentObject var cartViewModel: CartViewModel
     @ObservedObject private var viewModel = ProductDetailVM()
+    
     
     var product: Product
     
@@ -67,7 +70,11 @@ struct ProductDetailView: View {
                     Button(action: {
                         // Action when button is pressed
                         print("Button Pressed")
-                        viewModel.addToCartTapped {}
+                        viewModel.addToCartTapped { addedItem in
+                            cartViewModel.addToCart(item: addedItem)
+                            coordinator.pop()
+                            coordinator.selectedTab = 2
+                        }
                     }) {
                         HStack {
                             Text("Add to Bag")
