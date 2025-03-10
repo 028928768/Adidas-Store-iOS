@@ -10,7 +10,11 @@ import SwiftUI
 
 final class CartViewModel: ObservableObject {
     
-    @Published var cartItems: [CartModel] = []
+    @Published var cartItems: [CartModel] = [] {
+        didSet {
+            calculateTotalOrder()
+        }
+    }
     @Published var orderTotal: Double = 0
     
     func addToCart(item: CartModel) {

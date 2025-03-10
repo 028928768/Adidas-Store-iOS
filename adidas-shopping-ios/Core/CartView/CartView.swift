@@ -25,6 +25,16 @@ struct CartView: View {
                                 .frame(width: 30, height: 30)
                         }
                         .padding(.horizontal)
+                        
+                        if !viewModel.cartItems.isEmpty {
+                            HStack {
+                                Text("\(viewModel.cartItems.count) items")
+                                    .font(.system(size: 12, weight: .light))
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                        }
+                    
                     } //: Header
                     Spacer()
                     
@@ -35,7 +45,7 @@ struct CartView: View {
                                 .font(.system(size: 16, weight: .semibold))
                                 .padding(.horizontal)
                                 .padding(.bottom, 2)
-                            Text("Once you add something to your baf - it will appear here. Ready to get started?")
+                            Text("Once you add something to your bag - it will appear here. Ready to get started?")
                                 .font(.system(size: 14, weight: .regular))
                                 .padding(.horizontal)
                             
@@ -67,13 +77,83 @@ struct CartView: View {
                     } else {
                         VStack {
                             List(viewModel.cartItems, id: \.self) { item in
-                                VStack {
-                                    Text("Cart")
-                                    Text(item.products?.model ?? "model")
-                                }
+                                // MARK: - CartCell
+                                Group {
+                                    VStack {
+                                        HStack {
+                                            Image("adidas-product-\(item.products?.id ?? 1)")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(height: 100)
+                                                .clipped()
+                                            
+                                                VStack(alignment: .leading) {
+                                                    HStack {
+                                                        Text("฿ \(String(format: "%.2f",  item.products?.price ?? 0))")
+                                                            .font(.system(size: 14, weight: .semibold))
+                                                        
+                                                        Spacer()
+                                                        
+                                                        Text("1")
+                                                            .font(.system(size: 14, weight: .semibold))
+                                                            .padding(.horizontal)
+                                                        
+                                                    }
+                                                    .padding(.bottom)
+                                                    
+                                                    Text(item.products?.model ?? "")
+                                                        .font(.system(size: 16, weight: .medium))
+                                                    
+                                                    Text(item.products?.category ?? "")
+                                                        .font(.system(size: 14, weight: .light))
+                                                    
+                                                    
+                                                    Text("size: \(item.products?.size ?? "")")
+                                                        .font(.system(size: 14, weight: .light))
+                                                    
+                                                    
+                                                    
+                                                }
+                                            
+                                        }
+                                    }
+                                } //: CartCell
                                 
                             }
                             
+                            // MARK: - Summary
+                            Group {
+                                Divider()
+                                HStack {
+                                    Text("Total (Tax included): ")
+                                    Spacer()
+                                    Text("฿ \(String(format: "%.2f",  viewModel.orderTotal))")
+                                }
+                                
+                                VStack {
+                                    Button(action: {
+                                        // button pressed
+                                    }) {
+                                        HStack {
+                                            Text("CHECK OUT")
+                                                .font(.system(size: 14, weight: .semibold))
+                                                .foregroundColor(.white)  // White text color
+                                                .padding()  // Add padding inside the button
+                                            Spacer()
+                                            Image(systemName: "arrow.forward")
+                                                .foregroundColor(.white)
+                                                .padding()
+                                        }
+                                        
+                                    }
+                                    .background(Color.black)  // Black background color
+                                    .clipShape(Rectangle())  // Square shape (Rectangle)
+                                    
+                                } //: checkout button
+                                
+                            } //: - Summary
+                            .padding(.horizontal)
+                            .padding(.bottom, 6)
                         }
                     }
                 }

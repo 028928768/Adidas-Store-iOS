@@ -9,12 +9,8 @@ import Foundation
 
 final class ProductDetailVM: ObservableObject {
     
-    var product: Product
-    
-    init(product: Product? = nil) {
-        self.product = product ?? .sampleProduct
-    }
-        
+    var product: Product = Product.sampleProduct
+            
     func addToCartTapped(completion: @escaping (CartModel) -> Void) {
         // compose item forCartModel
         let cartModel = CartModel()

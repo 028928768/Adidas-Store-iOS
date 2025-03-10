@@ -12,7 +12,7 @@ struct ProductCell: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             
-            Image("adidas-product-1")
+            Image("adidas-product-\(product.id)")
                 .resizable()
                 .scaledToFit()
                 .clipped()
@@ -36,18 +36,18 @@ struct ProductCell: View {
                 }
             
             HStack {
-                Text("£135.00")
+                Text("฿ \(String(format: "%.2f",  product.price))")
                     .font(.system(size: 16, weight: .semibold))
                 Spacer()
-                Text("4")
+                Text("\(product.rating)")
                     .font(.system(size: 12, weight: .regular))
             }
             .padding(.vertical, 6)
             .padding(.horizontal, 6)
             
             VStack(alignment: .leading) {
-                Text("Name: Adizero Adios Pro 4")
-                Text("Type: Make Performance")
+                Text(product.model)
+                Text("\(product.gender) \(product.category)")
             }
             .padding(.horizontal, 6)
             .font(.system(size: 12, weight: .regular))
