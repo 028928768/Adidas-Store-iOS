@@ -15,6 +15,7 @@ final class HomeViewModel: ObservableObject {
     private var apiService = APIServices()
     
     func loadProducts() {
+        guard products.isEmpty else { return }
         isLoading = true
         apiService.fetchProducts(completion: { result in
             self.isLoading = false

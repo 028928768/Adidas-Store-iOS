@@ -68,8 +68,6 @@ struct ProductDetailView: View {
                 VStack {
                     Spacer()
                     Button(action: {
-                        // Action when button is pressed
-                        print("Button Pressed")
                         viewModel.addToCartTapped { addedItem in
                             cartViewModel.addToCart(item: addedItem)
                             coordinator.pop()
@@ -78,6 +76,7 @@ struct ProductDetailView: View {
                     }) {
                         HStack {
                             Text("Add to Bag")
+                                .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(.white)  // White text color
                                 .padding()  // Add padding inside the button
                             Spacer()
