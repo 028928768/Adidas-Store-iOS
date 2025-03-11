@@ -36,6 +36,8 @@ struct CartView: View {
                             .padding(.horizontal)
                         }
                     
+                    Divider()
+                        
                     } //: Header
                     Spacer()
                     
@@ -147,6 +149,7 @@ struct CartView: View {
                                     VStack {
                                         Button(action: {
                                             // button pressed
+                                            coordinator.push(.checkout)
                                         }) {
                                             HStack {
                                                 Text("CHECK OUT")

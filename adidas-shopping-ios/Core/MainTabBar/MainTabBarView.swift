@@ -75,6 +75,9 @@ struct MainTabBarView: View {
                     ProductDetailView(product: product)
                 case .cart:
                     CartView()
+                case .checkout:
+                    CheckoutView()
+                        .navigationTitle("CHECKOUT")
                 }
                 
             }

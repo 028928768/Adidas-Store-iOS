@@ -28,10 +28,13 @@
 		2B5DC7A82D7E0E2000C387CE /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A72D7E0E2000C387CE /* CartModel.swift */; };
 		2BCEF15D2D8004DE0008C606 /* Colour + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF15C2D8004DE0008C606 /* Colour + Extension.swift */; };
 		2BCEF15F2D8012840008C606 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF15E2D8012840008C606 /* String + Extension.swift */; };
+		2BCEF1622D801D520008C606 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1612D801D520008C606 /* CheckoutView.swift */; };
+		2BCEF1642D802EDD0008C606 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1632D802EDD0008C606 /* CheckoutViewModel.swift */; };
+		2BCEF1672D8037BA0008C606 /* PromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1662D8037BA0008C606 /* PromoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B5DC7672D7D812600C387CE /* adidas-shopping-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "adidas-shopping-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B5DC7672D7D812600C387CE /* Adidas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adidas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5DC76A2D7D812600C387CE /* adidas_shopping_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adidas_shopping_iosApp.swift; sourceTree = "<group>"; };
 		2B5DC76E2D7D812800C387CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B5DC7712D7D812800C387CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -54,6 +57,9 @@
 		2B5DC7A72D7E0E2000C387CE /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		2BCEF15C2D8004DE0008C606 /* Colour + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colour + Extension.swift"; sourceTree = "<group>"; };
 		2BCEF15E2D8012840008C606 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		2BCEF1612D801D520008C606 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		2BCEF1632D802EDD0008C606 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		2BCEF1662D8037BA0008C606 /* PromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,7 @@
 		2B5DC7682D7D812600C387CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B5DC7672D7D812600C387CE /* adidas-shopping-ios.app */,
+				2B5DC7672D7D812600C387CE /* Adidas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,6 +127,7 @@
 				2B5DC7812D7D88B500C387CE /* MainTabBar */,
 				2B5DC7822D7D88C600C387CE /* HomeView */,
 				2B5DC78E2D7DAEA800C387CE /* CartView */,
+				2BCEF1602D801D2B0008C606 /* CheckoutView */,
 				2B5DC78F2D7DAEC800C387CE /* FavouritesView */,
 			);
 			path = Core;
@@ -232,6 +239,24 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		2BCEF1602D801D2B0008C606 /* CheckoutView */ = {
+			isa = PBXGroup;
+			children = (
+				2BCEF1612D801D520008C606 /* CheckoutView.swift */,
+				2BCEF1632D802EDD0008C606 /* CheckoutViewModel.swift */,
+				2BCEF1652D8037A70008C606 /* Coupon */,
+			);
+			path = CheckoutView;
+			sourceTree = "<group>";
+		};
+		2BCEF1652D8037A70008C606 /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				2BCEF1662D8037BA0008C606 /* PromoView.swift */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,7 +274,7 @@
 			);
 			name = "adidas-shopping-ios";
 			productName = "adidas-shopping-ios";
-			productReference = 2B5DC7672D7D812600C387CE /* adidas-shopping-ios.app */;
+			productReference = 2B5DC7672D7D812600C387CE /* Adidas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -302,8 +327,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BCEF1642D802EDD0008C606 /* CheckoutViewModel.swift in Sources */,
 				2B5DC77F2D7D86C900C387CE /* SplashViewModel.swift in Sources */,
 				2B5DC7932D7DAEFD00C387CE /* FavouritesView.swift in Sources */,
+				2BCEF1622D801D520008C606 /* CheckoutView.swift in Sources */,
 				2B5DC7892D7D8B4500C387CE /* HomeViewModel.swift in Sources */,
 				2B5DC79A2D7DE80700C387CE /* ProductsGridView.swift in Sources */,
 				2B5DC7A62D7E0E1600C387CE /* CartViewModel.swift in Sources */,
@@ -316,6 +343,7 @@
 				2B5DC7A82D7E0E2000C387CE /* CartModel.swift in Sources */,
 				2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */,
 				2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */,
+				2BCEF1672D8037BA0008C606 /* PromoView.swift in Sources */,
 				2B5DC7A32D7E09CF00C387CE /* ProductDetailVM.swift in Sources */,
 				2B5DC77A2D7D859000C387CE /* Coordinator.swift in Sources */,
 				2B5DC7A12D7DF15B00C387CE /* APIServices.swift in Sources */,
@@ -467,7 +495,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "simon.siwell.uk.adidas-shopping-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Adidas;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,7 +523,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "simon.siwell.uk.adidas-shopping-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Adidas;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
