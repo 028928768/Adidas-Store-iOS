@@ -16,7 +16,7 @@ final class CartViewModel: ObservableObject {
         }
     }
     @Published var orderTotal: Double = 0
-    
+
     func addToCart(item: CartModel) {
         if !isAlreadyInCart(item: item) {
             self.cartItems.append(item)
@@ -39,4 +39,5 @@ final class CartViewModel: ObservableObject {
             orderTotal += (item.products?.price ?? 0) * Double(item.count)
         }
     }
+    
 }

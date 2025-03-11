@@ -109,7 +109,7 @@ struct CheckoutView: View {
                         .font(.system(size: 16, weight: .light))
                     Spacer()
                     
-                    Text("฿ \(String.formattedPrice(from: cartViewModel.orderTotal))")
+                    Text("฿ \(String.formattedPrice(from: viewModel.checkoutTotalPrice))")
                         .font(.system(size: 16, weight: .semibold))
             
                 }
@@ -169,6 +169,15 @@ struct CheckoutView: View {
             .sheet(isPresented: $viewModel.isPresentedPromoView) {
                 PromoView(isPresented: $viewModel.isPresentedPromoView, checkoutVM: viewModel)
                     .presentationDetents([.large])
+            }
+            .onAppear {
+                // assign order total to checkout total
+                viewModel.checkoutTotalPrice = cartViewModel.orderTotal
+                
+                // save original checkout total price
+                if viewModel.originalTotalCheckoutPrice == 0 {
+                    viewModel.originalTotalCheckoutPrice = cartViewModel.orderTotal
+                }
             }
         }
     }

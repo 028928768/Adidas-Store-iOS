@@ -25,6 +25,7 @@ struct PromoView: View {
                         Button(action: {
                             isPresented.toggle()
                             checkoutVM.clearCodeSelection()
+                            checkoutVM.revertOriginalPrice()
                         }, label: {
                             Image(systemName: "x.circle.fill")
                                 .resizable()
@@ -88,7 +89,7 @@ struct PromoView: View {
                     VStack {
                         Button(action: {
                             // button pressed - start calculation
-                            cartViewModel.orderTotal = checkoutVM.applyCampaigns(selectedCampaigns: checkoutVM.selectedCampaigns, originalPrice: cartViewModel.orderTotal, cartItems: cartViewModel.cartItems)
+                            checkoutVM.applyCampaigns(selectedCampaigns: checkoutVM.selectedCampaigns, cartItems: cartViewModel.cartItems)
                             isPresented.toggle()
                             
                         }) {

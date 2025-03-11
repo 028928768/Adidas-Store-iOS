@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class CheckoutViewModel: ObservableObject {
     @Published var selectedShippingMethod: String = "Adidas Store"
@@ -13,6 +14,12 @@ final class CheckoutViewModel: ObservableObject {
     @Published var selectedCampaigns: [Campaign] = []
     @Published var alertMessage: String?
     @Published var isShowSelectionAlert = false
+    
+    @Published var originalTotalCheckoutPrice: Double = 0.0
+    @Published var checkoutTotalPrice: Double = 0.0
+    
+    
+    @Published var appliedCampaigns: [Campaign] = []
     var shippingMethods = ["Adidas Store", "Flash Express", "Kerry Express"]
     
     // Sample Data for Campaigns with Calculation Rules
@@ -31,16 +38,22 @@ final class CheckoutViewModel: ObservableObject {
         ])
     ]
     
-    func applyCampaigns(selectedCampaigns: [Campaign], originalPrice: Double, cartItems: [CartModel]) -> Double {
-        var updatedPrice = originalPrice
+    func applyCampaigns(selectedCampaigns: [Campaign], cartItems: [CartModel]) {
+     
+        var priceAfterCampaigns = self.originalTotalCheckoutPrice
         
         for campaign in selectedCampaigns {
-            updatedPrice = calculateDiscountBasedOnRule(for: campaign, originalPrice: updatedPrice, cartItems: cartItems)
+            // add applied campaign to keep track
+            self.appliedCampaigns.append(campaign)
+            priceAfterCampaigns = calculateDiscountBasedOnRule(for: campaign, originalPrice: priceAfterCampaigns, cartItems: cartItems)
         }
         
-        return updatedPrice
+        self.checkoutTotalPrice = priceAfterCampaigns
     }
     
+    func revertOriginalPrice() {
+        return self.checkoutTotalPrice = self.originalTotalCheckoutPrice
+    }
 
     // To apply discount calculated based on campaign rules
     func calculateDiscountBasedOnRule(for campaign: Campaign, originalPrice: Double, cartItems: [CartModel]) -> Double {
