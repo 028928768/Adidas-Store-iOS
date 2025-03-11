@@ -18,52 +18,85 @@ final class CheckoutViewModel: ObservableObject {
     // Sample Data for Campaigns with Calculation Rules
     let categories: [Category] = [
         Category(name: "Coupon", campaigns: [
-            Campaign(title: "Fixed Amount Discount", discountDetails: "$20 off on your next purchase", rules: CampaignCalculation(discountType: .fixedAmount, amount: 20.0)),
-            Campaign(title: "Percentage Discount", discountDetails: "15% off on all items", rules: CampaignCalculation(discountType: .percentage, amount: 15.0))
+            Campaign(title: "Fixed Amount Discount", discountDetails: "฿500 baht off from your purchase", rules: CampaignCalculation(discountType: .fixedAmount, amount: 500.0)),
+            Campaign(title: "Percentage Discount", discountDetails: "20% off on all items", rules: CampaignCalculation(discountType: .percentage, amount: 20.0))
         ]),
         Category(name: "On Top", campaigns: [
-            Campaign(title: "Percentage Discount by Item Category", discountDetails: "10% off on electronics", rules: CampaignCalculation(discountType: .percentage, amount: 10.0, category: "Electronics")),
-            Campaign(title: "Discount by Points", discountDetails: "Use 200 points for $10 off", rules: CampaignCalculation(discountType: .points, pointsRequired: 200))
+            Campaign(title: "Percentage Discount by Item Category", discountDetails: "35% off on Performance shoes", rules: CampaignCalculation(discountType: .percentageOfCategory, amount: 35.0, category: "Performance")),
+            Campaign(title: "Discount by Points", discountDetails: "Use 200 points for ฿200 baht off", rules: CampaignCalculation(discountType: .points, pointsRequired: 200))
         ]),
         Category(name: "Seasonal", campaigns: [
-            Campaign(title: "Winter Special", discountDetails: "Buy 1 Get 1 Free on jackets", rules: CampaignCalculation(discountType: .special, specialOffer: "Buy 1 Get 1 Free")),
-            Campaign(title: "Holiday Deals", discountDetails: "Exclusive 30% off for the season", rules: CampaignCalculation(discountType: .percentage, amount: 30.0))
+            Campaign(title: "Winter Special", discountDetails: "Every 1,000 baht of purchase discount 500 baht!", rules: CampaignCalculation(discountType: .special, threshold: 1000.0, discountAmount: 500.0)),
+            Campaign(title: "Holiday Deals", discountDetails: "Exclusive deal discount 799 baht every 2,000 baht on this Holiday!", rules: CampaignCalculation(discountType: .special, threshold: 2000.0, discountAmount: 799.0))
         ])
     ]
     
-    // To calculate the dicount based on campaign rules
-    func calculateDiscount(for campaign: Campaign) -> String {
-        switch campaign.rules.discountType {
-        case .fixedAmount:
-            return "$\(campaign.rules.amount ?? 0.0) off"
-        case .percentage:
-            return "\(campaign.rules.amount ?? 0.0)% off"
-        case .percentageOfCategory:
-            return "\(campaign.rules.amount ?? 0.0)% off"
-        case .points:
-            return "Use \(campaign.rules.pointsRequired ?? 0) points for discount"
-        case .special:
-            return campaign.rules.specialOffer ?? ""
+    func applyCampaigns(selectedCampaigns: [Campaign], originalPrice: Double, cartItems: [CartModel]) -> Double {
+        var updatedPrice = originalPrice
+        
+        for campaign in selectedCampaigns {
+            updatedPrice = calculateDiscountBasedOnRule(for: campaign, originalPrice: updatedPrice, cartItems: cartItems)
         }
+        
+        return updatedPrice
     }
     
+
     // To apply discount calculated based on campaign rules
-    func applyDiscount(for campaign: Campaign, originalPrice: Double) -> Double {
+    func calculateDiscountBasedOnRule(for campaign: Campaign, originalPrice: Double, cartItems: [CartModel]) -> Double {
         switch campaign.rules.discountType {
         case .fixedAmount:
             return originalPrice - (campaign.rules.amount ?? 0.0)
         case .percentage:
             return originalPrice - (originalPrice * (campaign.rules.amount ?? 0.0) / 100)
         case .percentageOfCategory:
-            // check if there's any matched category then apply discount
-            return originalPrice
+            // Find the total price of items in the specified category
+            guard let campaignCategory = campaign.rules.category else { return originalPrice }
+            
+            // Calculate the total price for the matching category
+            let categoryTotal = cartItems.filter { $0.products?.category == campaignCategory }
+                .reduce(into: 0) { into, item in
+                    if let price = item.products?.price {
+                        into += price // Mutate the accumulator directly
+                    }
+                }
+            // Apply discount only to the matched category's items
+            if categoryTotal > 0 {
+                let discount = campaign.rules.amount ?? 0.0
+                let categoryDiscount = categoryTotal * discount / 100
+                return max(0, originalPrice - categoryDiscount)
+            }
+            
+            return originalPrice // Return the original price if no matching category is found
         case .points:
-            // Assume each point is worth a specific amount, e.g., 0.05 per point
-            let pointValue = 1.0
-            return originalPrice - (Double(campaign.rules.pointsRequired ?? 0) * pointValue)
+            // Assume each point is worth a specific amount, e.g., $1 per point
+            let pointValue = 1.0 // Define point value, could be adjusted
+            let points = Double(campaign.rules.pointsRequired ?? 0)
+
+            // Calculate the discount based on points
+            let calculatedDiscount = points * pointValue
+
+            // Cap the discount at 20% of the total price
+            let maxAllowedDiscount = originalPrice * 0.20
+            let discountToApply = min(calculatedDiscount, maxAllowedDiscount)
+
+            // Apply the discount and ensure the result is not less than 0
+            return max(0, originalPrice - discountToApply)
+            
         case .special:
-            // TODO: calculate subtraction
-            return originalPrice / 2
+            // Special case: Every X THB, subtract Y THB
+            guard let threshold = campaign.rules.threshold, let discountAmount = campaign.rules.discountAmount else {
+                return originalPrice // If no valid threshold or discount amount, return the original price
+            }
+
+            // Calculate how many times the threshold fits into the total price
+            let discountTimes = floor(originalPrice / threshold)
+
+            // Subtract the discount for each threshold
+            let totalDiscount = discountTimes * discountAmount
+
+            // Ensure the discount doesn’t make the price negative
+            return max(0, originalPrice - totalDiscount)
         }
     }
     

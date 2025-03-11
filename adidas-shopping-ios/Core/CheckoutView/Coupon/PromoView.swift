@@ -10,6 +10,8 @@ import SwiftUI
 struct PromoView: View {
     @Binding var isPresented: Bool
     @ObservedObject var checkoutVM: CheckoutViewModel
+    @EnvironmentObject var cartViewModel: CartViewModel
+    
     var body: some View {
         ZStack {
             VStack {
@@ -86,6 +88,9 @@ struct PromoView: View {
                     VStack {
                         Button(action: {
                             // button pressed - start calculation
+                            cartViewModel.orderTotal = checkoutVM.applyCampaigns(selectedCampaigns: checkoutVM.selectedCampaigns, originalPrice: cartViewModel.orderTotal, cartItems: cartViewModel.cartItems)
+                            isPresented.toggle()
+                            
                         }) {
                             HStack {
                                 Text("APPLY (\(checkoutVM.selectedCampaigns.count))")
@@ -113,9 +118,6 @@ struct PromoView: View {
                     Text(error)
                 }
             }
-        }
-        .onDisappear {
-            checkoutVM.clearCodeSelection()
         }
     }
 }

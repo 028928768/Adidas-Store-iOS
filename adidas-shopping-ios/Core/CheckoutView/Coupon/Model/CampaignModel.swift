@@ -25,7 +25,9 @@ struct CampaignCalculation {
     var amount: Double? // For fixed amount or percentage
     var category: String? // For percentage discount by item category
     var pointsRequired: Int? // For discount by points
-    var specialOffer: String? // For seasonal special offers
+    // seasonal - special offer - unit of currency
+    var threshold: Double?  // X THB, the threshold for applying discount
+    var discountAmount: Double? // Y THB, the discount amount to subtract
 }
 
 // Define the Category model for Coupon, On Top, and Seasonal
