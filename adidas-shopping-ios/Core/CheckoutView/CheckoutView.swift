@@ -148,11 +148,11 @@ struct CheckoutView: View {
                             HStack {
                                 Text("PLACE ORDER")
                                     .font(.system(size: 14, weight: .semibold))
-                                    .foregroundColor(.white)  // White text color
+                                    .foregroundStyle(.white)  // White text color
                                     .padding()  // Add padding inside the button
                                 Spacer()
                                 Image(systemName: "arrow.forward")
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .padding()
                             }
                             

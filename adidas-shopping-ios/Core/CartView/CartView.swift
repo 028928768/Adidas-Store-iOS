@@ -60,11 +60,11 @@ struct CartView: View {
                                     HStack {
                                         Text("GET STARTED")
                                             .font(.system(size: 16, weight: .semibold))
-                                            .foregroundColor(.white)  // White text color
+                                            .foregroundStyle(.white)  // White text color
                                             .padding()  // Add padding inside the button
                                         Spacer()
                                         Image(systemName: "arrow.forward")
-                                            .foregroundColor(.white)
+                                            .foregroundStyle(.white)
                                             .padding()
                                     }
                                     
@@ -154,11 +154,11 @@ struct CartView: View {
                                             HStack {
                                                 Text("CHECK OUT")
                                                     .font(.system(size: 14, weight: .semibold))
-                                                    .foregroundColor(.white)  // White text color
+                                                    .foregroundStyle(.white)  // White text color
                                                     .padding()  // Add padding inside the button
                                                 Spacer()
                                                 Image(systemName: "arrow.forward")
-                                                    .foregroundColor(.white)
+                                                    .foregroundStyle(.white)
                                                     .padding()
                                             }
                                             

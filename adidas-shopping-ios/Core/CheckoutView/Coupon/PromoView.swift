@@ -55,7 +55,7 @@ struct PromoView: View {
                                         
                                         Text(campaign.title)
                                             .font(.system(size: 12, weight: .medium))
-                                            .foregroundColor(.white)
+                                            .foregroundStyle(.white)
                                             .padding(.all, 2)
                                             .background(Color.black) 
                                             .shadow(radius: 5)
@@ -66,7 +66,7 @@ struct PromoView: View {
                                     // Show checkmark if campaign is selected
                                     if checkoutVM.selectedCampaigns.contains(where: { $0.id == campaign.id }) {
                                         Image(systemName: "checkmark.circle")
-                                            .foregroundColor(.black)
+                                            .foregroundStyle(.black)
                                             .padding()
                                     }
                                     
@@ -96,11 +96,11 @@ struct PromoView: View {
                             HStack {
                                 Text("APPLY (\(checkoutVM.selectedCampaigns.count))")
                                     .font(.system(size: 14, weight: .semibold))
-                                    .foregroundColor(.white)  // White text color
+                                    .foregroundStyle(.white)  // White text color
                                     .padding()  // Add padding inside the button
                                 Spacer()
                                 Image(systemName: "arrow.forward")
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .padding()
                             }
                             
