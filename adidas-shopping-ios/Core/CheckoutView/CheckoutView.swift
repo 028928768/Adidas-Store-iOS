@@ -9,25 +9,46 @@ import SwiftUI
 
 struct CheckoutView: View {
     @ObservedObject private var viewModel = CheckoutViewModel()
+    @EnvironmentObject var cartViewModel: CartViewModel
     
     var body: some View {
         ZStack {
             
             VStack {
-                
+                Divider()
+                    .padding()
                 // MARK: - Products
                 Group {
+                if cartViewModel.cartItems.count <= 1 {
+                    HStack {
+                        Image("adidas-product-\(cartViewModel.cartItems[0].id)")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 50)
+                            .clipped()
+                        
+                        VStack(alignment: .leading) {
+                            Text(cartViewModel.cartItems[0].products?.model ?? "")
+                                .font(.system(size: 16, weight: .medium))
+                            Text(cartViewModel.cartItems[0].products?.size ?? "")
+                                .font(.system(size: 14, weight: .light))
+                        }
+                    }
+                } else {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            ForEach(1...10, id: \.self) { index in
-                                Text("Item \(index)")
-                                    .padding()
-                                    .background(Color.blue)
-                                    .cornerRadius(10)
+                            ForEach(cartViewModel.cartItems, id: \.self) { item in
+                                Image("adidas-product-\(item.products?.id ?? 0)")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 50)
+                                    .clipped()
                             }
                         }
                         .padding()
                     }
+                }
+
                 } //: Products
                 
                 Divider()
@@ -41,6 +62,7 @@ struct CheckoutView: View {
                     Picker("Select shipping method", selection: $viewModel.selectedShippingMethod) {
                         ForEach(viewModel.shippingMethods, id: \.self) { method in
                             Text(method).tag(method)
+                                .font(.system(size: 16, weight: .light))
                         }
                     }
                     
@@ -55,13 +77,25 @@ struct CheckoutView: View {
                     Text("PROMO CODE")
                         .font(.system(size: 16, weight: .light))
                     Spacer()
-                    Button(action: {
-                        viewModel.isPresentedPromoView.toggle()
-                    }, label: {
-                        Text("Pick discount")
-                            .font(.system(size: 18, weight: .regular))
-                    })
-            
+                    
+                    if viewModel.selectedCampaigns.isEmpty {
+                        Button(action: {
+                            viewModel.isPresentedPromoView.toggle()
+                        }, label: {
+                            Text("Pick discount")
+                                .font(.system(size: 16, weight: .light))
+                        })
+                    } else {
+                        Button(action: {
+                            viewModel.isPresentedPromoView.toggle()
+                        }, label: {
+                            Image(systemName: "tag.fill")
+                            Text("\(viewModel.selectedCampaigns.count) offers applied")
+                                .font(.system(size: 16, weight: .light))
+                        })
+                        
+                    }
+                    
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 6)
@@ -75,7 +109,7 @@ struct CheckoutView: View {
                         .font(.system(size: 16, weight: .light))
                     Spacer()
                     
-                    Text("Price")
+                    Text("฿ \(String.formattedPrice(from: cartViewModel.orderTotal))")
                         .font(.system(size: 16, weight: .semibold))
             
                 }
@@ -112,7 +146,7 @@ struct CheckoutView: View {
                             // button pressed
                         }) {
                             HStack {
-                                Text("CHECK OUT")
+                                Text("PLACE ORDER")
                                     .font(.system(size: 14, weight: .semibold))
                                     .foregroundColor(.white)  // White text color
                                     .padding()  // Add padding inside the button
@@ -126,7 +160,7 @@ struct CheckoutView: View {
                         .background(Color.black)  // Black background color
                         .clipShape(Rectangle())  // Square shape (Rectangle)
                         
-                    } //: checkout button
+                    } //: order button
                     .padding()
                 }
                 

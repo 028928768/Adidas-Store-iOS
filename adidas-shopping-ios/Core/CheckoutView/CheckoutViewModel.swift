@@ -10,6 +10,7 @@ import Foundation
 final class CheckoutViewModel: ObservableObject {
     @Published var selectedShippingMethod: String = "Adidas Store"
     @Published var isPresentedPromoView = false
+    @Published var selectedCampaigns: [Campaign] = []
     var shippingMethods = ["Adidas Store", "Flash Express", "Kerry Express"]
     
     // Sample Data for Campaigns with Calculation Rules
@@ -64,4 +65,17 @@ final class CheckoutViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Promocodes selection handling
+    func toggleCodeSelection(for campaign: Campaign) {
+        if let index = selectedCampaigns.firstIndex(where: { $0.id == campaign.id }) {
+            self.selectedCampaigns.remove(at: index)
+        } else {
+            self.selectedCampaigns.append(campaign)
+        }
+
+    }
+    
+    func clearCodeSelection() {
+        self.selectedCampaigns.removeAll()
+    }
 }

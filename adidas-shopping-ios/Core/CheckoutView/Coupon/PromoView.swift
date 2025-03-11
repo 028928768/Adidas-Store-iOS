@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PromoView: View {
     @Binding var isPresented: Bool
-    var checkoutVM: CheckoutViewModel
+    @ObservedObject var checkoutVM: CheckoutViewModel
     var body: some View {
         ZStack {
             VStack {
@@ -17,14 +17,16 @@ struct PromoView: View {
                     HStack {
                         Spacer()
                         Text("PROMO CODES")
+                            .font(.system(size: 18, weight: .semibold))
                         
                         Spacer()
                         Button(action: {
                             isPresented.toggle()
+                            checkoutVM.clearCodeSelection()
                         }, label: {
                             Image(systemName: "x.circle.fill")
                                 .resizable()
-                                .frame(width: 30, height: 30)
+                                .frame(width: 25, height: 25)
                         })
                  
                     }
@@ -36,27 +38,75 @@ struct PromoView: View {
                 List {
                     // Loop through each category and display it
                     ForEach(checkoutVM.categories, id: \.name) { category in
-                        Section(header: Text(category.name).font(.headline)) {
+                        Section(header: Text(category.name).font(.system(size: 16, weight: .medium))) {
                             // Loop through the campaigns in each category
                             ForEach(category.campaigns) { campaign in
                                 HStack {
+                                    Image("adidas-logo-sales")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
                                     VStack(alignment: .leading) {
-                                        Text(campaign.title)
-                                            .fontWeight(.bold)
                                         Text(campaign.discountDetails)
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
+                                            .font(.system(size: 16, weight: .medium))
+                                            .padding(.bottom, 4)
+                                        
+                                        Text(campaign.title)
+                                            .font(.system(size: 12, weight: .medium))
+                                            .foregroundColor(.white)
+                                            .padding(.all, 2)
+                                            .background(Color.black) 
+                                            .shadow(radius: 5)
                                     }
+                                    
                                     Spacer()
-                                    Text(checkoutVM.calculateDiscount(for: campaign))
-                                        .foregroundColor(.green)
+                                    
+                                    // Show checkmark if campaign is selected
+                                    if checkoutVM.selectedCampaigns.contains(where: { $0.id == campaign.id }) {
+                                        Image(systemName: "checkmark.circle")
+                                            .foregroundColor(.black)
+                                            .padding()
+                                    }
+        
                                 }
                                 .padding(.vertical, 8)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    checkoutVM.toggleCodeSelection(for: campaign)
+                                }
                             }
+
                         }
                     }
                 }
+                .listStyle(.grouped)
+                
+                if !checkoutVM.selectedCampaigns.isEmpty {
+                    VStack {
+                        Button(action: {
+                            // button pressed - start calculation
+                        }) {
+                            HStack {
+                                Text("APPLY (\(checkoutVM.selectedCampaigns.count))")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(.white)  // White text color
+                                    .padding()  // Add padding inside the button
+                                Spacer()
+                                Image(systemName: "arrow.forward")
+                                    .foregroundColor(.white)
+                                    .padding()
+                            }
+                            
+                        }
+                        .background(Color.black)  // Black background color
+                        .clipShape(Rectangle())  // Square shape (Rectangle)
+                        
+                    } //: apply button
+                    .padding()
+                }
             } //: Main VStack
+        }
+        .onDisappear {
+            checkoutVM.clearCodeSelection()
         }
     }
 }
