@@ -114,59 +114,61 @@ final class CheckoutViewModel: ObservableObject {
     }
     
     // MARK: - Promocodes selection handling
-    
-    // Function to add campaign with validation
     func addCampaign(_ campaign: Campaign, from category: Category) {
-        
-        // Check if campaign is already selected
-        if let index = selectedCampaigns.firstIndex(where: { $0.id == campaign.id }) {
-            // If the campaign is already selected, remove it (toggle off)
-            selectedCampaigns.remove(at: index)
-            return
-        }
-
-        // Check if user can select this campaign based on rules
-        if canSelectCampaign(campaign, from: category) {
-            // Remove existing campaign from the same category
-            selectedCampaigns.removeAll { existing in
-                categories.first(where: { $0.name == category.name })?.campaigns.contains(where: { $0.id == existing.id }) ?? false
-            }
-            // Add new campaign
-            selectedCampaigns.append(campaign)
-        }
-    }
-    
-    // Function to check if a campaign can be selected and order is correct
-    private func canSelectCampaign(_ campaign: Campaign, from category: Category) -> Bool {
-        let selectedCategories = selectedCampaigns.compactMap { campaign in
-            categories.first { $0.campaigns.contains(where: { $0.id == campaign.id }) }?.name
-        }
-
         let requiredOrder = ["Coupon", "On Top", "Seasonal"]
-        
-        // Get the category index in required order
-        guard let currentCategoryIndex = requiredOrder.firstIndex(of: category.name) else { return false }
 
-        // Check if previous steps in the order are missing
-        for i in 0..<currentCategoryIndex {
+        // Get category index of the campaign being selected/deselected
+        guard let selectedCategoryIndex = requiredOrder.firstIndex(of: category.name) else { return }
+
+        // Get categories of currently selected campaigns
+        let selectedCategories = selectedCampaigns.compactMap { campaign in
+            categories.first(where: { $0.campaigns.contains(where: { $0.id == campaign.id }) })?.name
+        }
+
+        // Detect if user is deselecting (toggle behavior)
+        if let existingIndex = selectedCampaigns.firstIndex(where: { $0.id == campaign.id }) {
+            selectedCampaigns.remove(at: existingIndex) // Remove selected campaign
+
+            // Remove all higher-category selections automatically
+            selectedCampaigns.removeAll { existing in
+                if let existingCategory = categories.first(where: { $0.campaigns.contains(where: { $0.id == existing.id }) })?.name,
+                   let existingIndex = requiredOrder.firstIndex(of: existingCategory),
+                   existingIndex > selectedCategoryIndex {
+                    return true  // Remove all selections that are higher in order
+                }
+                return false
+            }
+            return // Exit early after removal
+        }
+
+        // Ensure selection follows the correct order
+        for i in 0..<selectedCategoryIndex {
             if !selectedCategories.contains(requiredOrder[i]) {
                 self.alertMessage = "You must select '\(requiredOrder[i])' before selecting '\(category.name)'."
                 self.isShowSelectionAlert = true
-                return false
+                return
             }
         }
 
-        // Ensure only one campaign per category
-        if selectedCategories.contains(category.name) {
-            self.alertMessage = "You can only select one campaign per category."
-            self.isShowSelectionAlert = true
+        // Remove all higher-category selections (if user re-selects a lower one)
+        selectedCampaigns.removeAll { existing in
+            if let existingCategory = categories.first(where: { $0.campaigns.contains(where: { $0.id == existing.id }) })?.name,
+               let existingIndex = requiredOrder.firstIndex(of: existingCategory),
+               existingIndex > selectedCategoryIndex {
+                return true  // Remove all selections that are higher in order
+            }
             return false
         }
 
-        return true
+        // Remove any existing campaign from the same category before adding the new one
+        selectedCampaigns.removeAll { existing in
+            categories.first(where: { $0.name == category.name })?.campaigns.contains(where: { $0.id == existing.id }) ?? false
+        }
+
+        // Add the new campaign
+        selectedCampaigns.append(campaign)
     }
-    
-    
+
     func clearCodeSelection() {
         self.selectedCampaigns.removeAll()
     }
