@@ -31,6 +31,7 @@
 		2BCEF1622D801D520008C606 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1612D801D520008C606 /* CheckoutView.swift */; };
 		2BCEF1642D802EDD0008C606 /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1632D802EDD0008C606 /* CheckoutViewModel.swift */; };
 		2BCEF1672D8037BA0008C606 /* PromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1662D8037BA0008C606 /* PromoView.swift */; };
+		2BCEF16A2D803F0B0008C606 /* CampaignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF1692D803F0B0008C606 /* CampaignModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		2BCEF1612D801D520008C606 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		2BCEF1632D802EDD0008C606 /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		2BCEF1662D8037BA0008C606 /* PromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoView.swift; sourceTree = "<group>"; };
+		2BCEF1692D803F0B0008C606 /* CampaignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,9 +254,18 @@
 		2BCEF1652D8037A70008C606 /* Coupon */ = {
 			isa = PBXGroup;
 			children = (
+				2BCEF1682D803EF60008C606 /* Model */,
 				2BCEF1662D8037BA0008C606 /* PromoView.swift */,
 			);
 			path = Coupon;
+			sourceTree = "<group>";
+		};
+		2BCEF1682D803EF60008C606 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BCEF1692D803F0B0008C606 /* CampaignModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +346,7 @@
 				2B5DC79A2D7DE80700C387CE /* ProductsGridView.swift in Sources */,
 				2B5DC7A62D7E0E1600C387CE /* CartViewModel.swift in Sources */,
 				2B5DC78B2D7D8BD600C387CE /* MainTabBarView.swift in Sources */,
+				2BCEF16A2D803F0B0008C606 /* CampaignModel.swift in Sources */,
 				2B5DC79C2D7DEBDF00C387CE /* ProductDetailView.swift in Sources */,
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,

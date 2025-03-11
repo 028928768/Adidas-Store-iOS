@@ -59,7 +59,7 @@ struct CheckoutView: View {
                         viewModel.isPresentedPromoView.toggle()
                     }, label: {
                         Text("Pick discount")
-                            .font(.system(size: 18, weight: .light))
+                            .font(.system(size: 18, weight: .regular))
                     })
             
                 }
@@ -133,7 +133,7 @@ struct CheckoutView: View {
 
             } //: Main VStack
             .sheet(isPresented: $viewModel.isPresentedPromoView) {
-                PromoView(isPresented: $viewModel.isPresentedPromoView)
+                PromoView(isPresented: $viewModel.isPresentedPromoView, checkoutVM: viewModel)
                     .presentationDetents([.large])
             }
         }
