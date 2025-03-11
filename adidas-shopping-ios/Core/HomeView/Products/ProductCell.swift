@@ -36,7 +36,7 @@ struct ProductCell: View {
                 }
             
             HStack {
-                Text("฿ \(String(format: "%.2f",  product.price))")
+                Text("฿ \(String.formattedPrice(from: product.price))")
                     .font(.system(size: 16, weight: .semibold))
                 Spacer()
                 Text("\(product.rating)")

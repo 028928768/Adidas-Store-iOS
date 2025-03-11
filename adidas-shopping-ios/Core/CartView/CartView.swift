@@ -92,7 +92,7 @@ struct CartView: View {
                                                 
                                                 VStack(alignment: .leading) {
                                                     HStack {
-                                                        Text("฿ \(String(format: "%.2f",  item.products?.price ?? 0))")
+                                                        Text("฿ \(String.formattedPrice(from:  item.products?.price ?? 0))")
                                                             .font(.system(size: 14, weight: .semibold))
                                                         
                                                         Spacer()
@@ -140,7 +140,8 @@ struct CartView: View {
                                     HStack {
                                         Text("Total (Tax included): ")
                                         Spacer()
-                                        Text("฿ \(String(format: "%.2f",  viewModel.orderTotal))")
+                                        
+                                        Text("฿ \(String.formattedPrice(from:  viewModel.orderTotal))")
                                     }
                                     
                                     VStack {

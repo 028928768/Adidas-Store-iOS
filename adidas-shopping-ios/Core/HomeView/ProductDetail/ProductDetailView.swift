@@ -43,7 +43,7 @@ struct ProductDetailView: View {
                     .padding(.horizontal)
                     
                     HStack {
-                        Text("฿ \(String(format: "%.2f",  product.price))")
+                        Text("฿ \(String.formattedPrice(from: product.price))")
                             .font(.system(size: 14, weight: .semibold))
                         Spacer()
                         if !(product.isInStock ?? true) {

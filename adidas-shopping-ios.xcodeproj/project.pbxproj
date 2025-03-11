@@ -27,6 +27,7 @@
 		2B5DC7A62D7E0E1600C387CE /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A52D7E0E1600C387CE /* CartViewModel.swift */; };
 		2B5DC7A82D7E0E2000C387CE /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DC7A72D7E0E2000C387CE /* CartModel.swift */; };
 		2BCEF15D2D8004DE0008C606 /* Colour + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF15C2D8004DE0008C606 /* Colour + Extension.swift */; };
+		2BCEF15F2D8012840008C606 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCEF15E2D8012840008C606 /* String + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		2B5DC7A52D7E0E1600C387CE /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		2B5DC7A72D7E0E2000C387CE /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		2BCEF15C2D8004DE0008C606 /* Colour + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colour + Extension.swift"; sourceTree = "<group>"; };
+		2BCEF15E2D8012840008C606 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				2BCEF15C2D8004DE0008C606 /* Colour + Extension.swift */,
+				2BCEF15E2D8012840008C606 /* String + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				2B5DC77D2D7D86B100C387CE /* SplashView.swift in Sources */,
 				2B5DC76B2D7D812600C387CE /* adidas_shopping_iosApp.swift in Sources */,
 				2B5DC7872D7D8B3500C387CE /* HomeView.swift in Sources */,
+				2BCEF15F2D8012840008C606 /* String + Extension.swift in Sources */,
 				2B5DC7A82D7E0E2000C387CE /* CartModel.swift in Sources */,
 				2B5DC7952D7DC35000C387CE /* ProductCell.swift in Sources */,
 				2B5DC7912D7DAEE800C387CE /* CartView.swift in Sources */,
