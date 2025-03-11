@@ -49,14 +49,11 @@ Build and run the project on a simulator or a physical iOS device.
 
 Screenshots
 
-![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-03-11 at 12.26.13.png…]()
-
-![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-03-11 at 12.26.57.png…]()
-![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-03-11 at 12.27.42.png…]()
-![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-03-11 at 12.27.06.png…]()
-
-
-
+<p float="left">
+<img src="https://github.com/028928768/Adidas-Store-iOS/blob/main/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202025-03-11%20at%2012.26.13.png" width="250" height="600">
+<img src="https://github.com/028928768/Adidas-Store-iOS/blob/main/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202025-03-11%20at%2012.26.57.png" width="250" height="600">
+<img src="https://github.com/028928768/Adidas-Store-iOS/blob/main/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20-%202025-03-11%20at%2012.27.42.png" width="250" height="600">
+</p>
 Future Enhancements
 
 Implement real-time API fetching for product listings.
