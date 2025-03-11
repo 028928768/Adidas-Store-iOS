@@ -9,15 +9,12 @@ import SwiftUI
 
 enum TabItems: Int, CaseIterable {
     case home = 0
-    case favourites
     case cart
     
     var title: String {
         switch self {
         case .home:
             return "Home"
-        case .favourites:
-            return "Favourites"
         case .cart:
             return "Cart"
         }
@@ -27,8 +24,6 @@ enum TabItems: Int, CaseIterable {
         switch self {
         case .home:
             return "house.fill"
-        case .favourites:
-            return "heart.fill"
         case .cart:
             return "cart.fill"
         }
@@ -49,16 +44,11 @@ struct MainTabBarView: View {
                             Label("\(TabItems.home.title)", systemImage: "\(TabItems.home.iconName)")
                         }
                         .tag(0)
-                    FavouritesView()
-                        .tabItem {
-                            Label("\(TabItems.favourites.title)", systemImage: "\(TabItems.favourites.iconName)")
-                        }
-                        .tag(1)
                     CartView()
                         .tabItem {
                             Label("\(TabItems.cart.title)", systemImage: "\(TabItems.cart.iconName)")
                         }
-                        .tag(2)
+                        .tag(1)
                     
                 }
                 

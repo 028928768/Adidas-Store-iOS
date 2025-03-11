@@ -16,24 +16,6 @@ struct ProductCell: View {
                 .resizable()
                 .scaledToFit()
                 .clipped()
-                .overlay {
-                    VStack{
-                        HStack {
-                            Spacer()
-                            Button {
-                                // - MARK: - button action - favourite tapped
-                            } label: {
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .font(.system(size: 24))
-                                    .padding(6)
-                            }
-                        }
-                        .padding(6)
-                        Spacer()
-                    }
-                }
             
             HStack {
                 Text("฿ \(String.formattedPrice(from: product.price))")

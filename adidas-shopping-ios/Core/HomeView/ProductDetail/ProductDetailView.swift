@@ -71,7 +71,7 @@ struct ProductDetailView: View {
                         viewModel.addToCartTapped { addedItem in
                             cartViewModel.addToCart(item: addedItem)
                             coordinator.pop()
-                            coordinator.selectedTab = 2
+                            coordinator.selectedTab = 1
                         }
                     }) {
                         HStack {
