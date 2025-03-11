@@ -27,7 +27,11 @@ final class CartViewModel: ObservableObject {
     func isAlreadyInCart(item: CartModel) -> Bool {
         return self.cartItems.contains(where: {$0.id == item.id})
     }
-        
+    
+    func removeFromCart(indexSet: IndexSet) {
+        self.cartItems.remove(atOffsets: indexSet)
+    }
+
     func calculateTotalOrder() {
         orderTotal = 0
         

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CartView: View {
     
+    @EnvironmentObject private var coordinator: Coordinator
     @EnvironmentObject var viewModel: CartViewModel
     
     var body: some View {
@@ -52,6 +53,7 @@ struct CartView: View {
                             VStack {
                                 Button(action: {
                                     // button pressed
+                                    coordinator.selectedTab = 0
                                 }) {
                                     HStack {
                                         Text("GET STARTED")
@@ -76,17 +78,18 @@ struct CartView: View {
                         
                     } else {
                         VStack {
-                            List(viewModel.cartItems, id: \.self) { item in
-                                // MARK: - CartCell
-                                Group {
-                                    VStack {
-                                        HStack {
-                                            Image("adidas-product-\(item.products?.id ?? 1)")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 100)
-                                                .clipped()
-                                            
+                            List {
+                                ForEach(viewModel.cartItems, id: \.self) { item in
+                                    // MARK: - CartCell
+                                    Group {
+                                        VStack {
+                                            HStack {
+                                                Image("adidas-product-\(item.products?.id ?? 1)")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(height: 125)
+                                                    .clipped()
+                                                
                                                 VStack(alignment: .leading) {
                                                     HStack {
                                                         Text("฿ \(String(format: "%.2f",  item.products?.price ?? 0))")
@@ -110,60 +113,70 @@ struct CartView: View {
                                                     
                                                     Text("size: \(item.products?.size ?? "")")
                                                         .font(.system(size: 14, weight: .light))
+                                                        .padding(.bottom, 6)
                                                     
                                                     
                                                     
                                                 }
-                                            
+                                                
+                                                
+                                            }
                                         }
-                                    }
-                                } //: CartCell
-                                
-                            }
+                                    } //: CartCell
+                                    .listRowInsets(EdgeInsets())
+                                    .listRowSeparator(.hidden)
+                                    .background(Color.appPrimaryLightGray)
+                                } //: ForEach
+                                .onDelete(perform: { indexSet in
+                                    viewModel.removeFromCart(indexSet: indexSet)
+                                })
+                            } //: List
+                            .listStyle(.plain)
+                            .listRowSpacing(2)
                             
                             // MARK: - Summary
                             Group {
-                                Divider()
-                                HStack {
-                                    Text("Total (Tax included): ")
-                                    Spacer()
-                                    Text("฿ \(String(format: "%.2f",  viewModel.orderTotal))")
-                                }
-                                
-                                VStack {
-                                    Button(action: {
-                                        // button pressed
-                                    }) {
-                                        HStack {
-                                            Text("CHECK OUT")
-                                                .font(.system(size: 14, weight: .semibold))
-                                                .foregroundColor(.white)  // White text color
-                                                .padding()  // Add padding inside the button
-                                            Spacer()
-                                            Image(systemName: "arrow.forward")
-                                                .foregroundColor(.white)
-                                                .padding()
-                                        }
-                                        
+                                    Divider()
+                                    HStack {
+                                        Text("Total (Tax included): ")
+                                        Spacer()
+                                        Text("฿ \(String(format: "%.2f",  viewModel.orderTotal))")
                                     }
-                                    .background(Color.black)  // Black background color
-                                    .clipShape(Rectangle())  // Square shape (Rectangle)
                                     
-                                } //: checkout button
-                                
-                            } //: - Summary
-                            .padding(.horizontal)
-                            .padding(.bottom, 6)
+                                    VStack {
+                                        Button(action: {
+                                            // button pressed
+                                        }) {
+                                            HStack {
+                                                Text("CHECK OUT")
+                                                    .font(.system(size: 14, weight: .semibold))
+                                                    .foregroundColor(.white)  // White text color
+                                                    .padding()  // Add padding inside the button
+                                                Spacer()
+                                                Image(systemName: "arrow.forward")
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                            }
+                                            
+                                        }
+                                        .background(Color.black)  // Black background color
+                                        .clipShape(Rectangle())  // Square shape (Rectangle)
+                                        
+                                    } //: checkout button
+                                    
+                                } //: - Summary
+                                .padding(.horizontal)
+                                .padding(.bottom, 6)
+                            }
                         }
                     }
-                }
-            } //: Main ZStac
-        } //: GeometryReader
-        
+                } //: Main ZStac
+            } //: GeometryReader
+            
+        }
     }
-}
-
-#Preview {
-    CartView()
-        .environmentObject(CartViewModel())
-}
+    
+    #Preview {
+        CartView()
+            .environmentObject(CartViewModel())
+    }
