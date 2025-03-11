@@ -11,6 +11,8 @@ final class CheckoutViewModel: ObservableObject {
     @Published var selectedShippingMethod: String = "Adidas Store"
     @Published var isPresentedPromoView = false
     @Published var selectedCampaigns: [Campaign] = []
+    @Published var alertMessage: String?
+    @Published var isShowSelectionAlert = false
     var shippingMethods = ["Adidas Store", "Flash Express", "Kerry Express"]
     
     // Sample Data for Campaigns with Calculation Rules
@@ -66,16 +68,61 @@ final class CheckoutViewModel: ObservableObject {
     }
     
     // MARK: - Promocodes selection handling
-    func toggleCodeSelection(for campaign: Campaign) {
+    
+    // Function to add campaign with validation
+    func addCampaign(_ campaign: Campaign, from category: Category) {
+        
+        // Check if campaign is already selected
         if let index = selectedCampaigns.firstIndex(where: { $0.id == campaign.id }) {
-            self.selectedCampaigns.remove(at: index)
-        } else {
-            self.selectedCampaigns.append(campaign)
+            // If the campaign is already selected, remove it (toggle off)
+            selectedCampaigns.remove(at: index)
+            return
         }
 
+        // Check if user can select this campaign based on rules
+        if canSelectCampaign(campaign, from: category) {
+            // Remove existing campaign from the same category
+            selectedCampaigns.removeAll { existing in
+                categories.first(where: { $0.name == category.name })?.campaigns.contains(where: { $0.id == existing.id }) ?? false
+            }
+            // Add new campaign
+            selectedCampaigns.append(campaign)
+        }
     }
+    
+    // Function to check if a campaign can be selected and order is correct
+    private func canSelectCampaign(_ campaign: Campaign, from category: Category) -> Bool {
+        let selectedCategories = selectedCampaigns.compactMap { campaign in
+            categories.first { $0.campaigns.contains(where: { $0.id == campaign.id }) }?.name
+        }
+
+        let requiredOrder = ["Coupon", "On Top", "Seasonal"]
+        
+        // Get the category index in required order
+        guard let currentCategoryIndex = requiredOrder.firstIndex(of: category.name) else { return false }
+
+        // Check if previous steps in the order are missing
+        for i in 0..<currentCategoryIndex {
+            if !selectedCategories.contains(requiredOrder[i]) {
+                self.alertMessage = "You must select '\(requiredOrder[i])' before selecting '\(category.name)'."
+                self.isShowSelectionAlert = true
+                return false
+            }
+        }
+
+        // Ensure only one campaign per category
+        if selectedCategories.contains(category.name) {
+            self.alertMessage = "You can only select one campaign per category."
+            self.isShowSelectionAlert = true
+            return false
+        }
+
+        return true
+    }
+    
     
     func clearCodeSelection() {
         self.selectedCampaigns.removeAll()
     }
+    
 }

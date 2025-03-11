@@ -66,13 +66,15 @@ struct PromoView: View {
                                             .foregroundColor(.black)
                                             .padding()
                                     }
-        
+                                    
+                     
                                 }
                                 .padding(.vertical, 8)
                                 .contentShape(Rectangle())
                                 .onTapGesture {
-                                    checkoutVM.toggleCodeSelection(for: campaign)
+                                    checkoutVM.addCampaign(campaign, from: category)
                                 }
+                                
                             }
 
                         }
@@ -104,6 +106,13 @@ struct PromoView: View {
                     .padding()
                 }
             } //: Main VStack
+            .alert("Selection Error", isPresented: $checkoutVM.isShowSelectionAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                if let error = checkoutVM.alertMessage {
+                    Text(error)
+                }
+            }
         }
         .onDisappear {
             checkoutVM.clearCodeSelection()
